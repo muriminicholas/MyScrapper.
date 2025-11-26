@@ -1,0 +1,12 @@
+{
+  "name": "ScrapyFlow",
+  "image": "mcr.microsoft.com/devcontainers/python:3.11",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+  },
+  "postCreateCommand": "pip install --no-cache-dir fastapi uvicorn[standard] sqlalchemy asyncpg psycopg2-binary redis rq passlib[bcrypt] python-jose[cryptography] pydantic-settings python-multipart jinja2 httpx playwright && playwright install-deps && playwright install chromium",
+  "forwardPorts": [8000, 5000],
+  "portsAttributes": {
+    "8000": { "label": "ScrapyFlow Web", "onAutoForward": "notify" }
+  }
+}
