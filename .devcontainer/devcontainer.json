@@ -1,12 +1,18 @@
 {
-  "name": "ScrapyFlow",
-  "image": "mcr.microsoft.com/devcontainers/python:3.11",
+  "name": "ScrapyFlow – Lightweight (No Docker-in-Docker)",
+  "image": "mcr.microsoft.com/devcontainers/python:3.11-bookworm",
   "features": {
-    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+    "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {
+      "enable": false
+    }
   },
-  "postCreateCommand": "pip install --no-cache-dir fastapi uvicorn[standard] sqlalchemy asyncpg psycopg2-binary redis rq passlib[bcrypt] python-jose[cryptography] pydantic-settings python-multipart jinja2 httpx playwright && playwright install-deps && playwright install chromium",
-  "forwardPorts": [8000, 5000],
+  "postCreateCommand": "bash .devcontainer/post-create.sh",
+  "forwardPorts": [8000, 5432, 6379],
   "portsAttributes": {
     "8000": { "label": "ScrapyFlow Web", "onAutoForward": "notify" }
+  },
+  "remoteEnv": {
+    "DATABASE_URL": "postgresql+asyncpg://postgres:postgres@localhost:5432/scrapyflow",
+    "REDIS_URL": "redis://localhost:6379/0"
   }
 }
