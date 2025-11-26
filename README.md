@@ -107,3 +107,14 @@ scrapyflow/
 ├── alembic.ini                 # If using Alembic for migrations
 └── README.md                   # You are here
 
+
+### Key Highlights
+
+- **100% Python** – No Node.js required
+- **Real-time updates** via FastAPI WebSockets + Redis Pub/Sub
+- **Live dashboard** powered by HTMX + Tailwind (zero page reloads)
+- **Easy to extend** – Just drop a new `.py` file in `tasks/` and it appears in the UI
+- **Production-ready** with Docker Compose (Redis, Postgres, Worker, Web)
+
+
+
