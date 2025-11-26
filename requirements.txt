@@ -1,0 +1,12 @@
+fastapi
+uvicorn[standard]
+sqlalchemy[asyncio]
+asyncpg
+redis
+rq
+passlib[bcrypt]
+python-jose[cryptography]
+pydantic-settings
+jinja2
+httpx
+playwright
